@@ -1,0 +1,28 @@
+---
+layout: default
+---
+<article class="post">
+  <header class="post-head">
+    <div class="meta">
+      <span class="date">{{ page.date | date: "%b %-d, %Y" }}</span>
+      {% if page.category %}<span class="cat">{{ page.category }}</span>{% endif %}
+      {% if page.source_name %}<span class="src-name">via {{ page.source_name }}</span>{% endif %}
+    </div>
+    <h1>{{ page.title }}</h1>
+    {% if page.summary %}<p class="dek">{{ page.summary }}</p>{% endif %}
+  </header>
+
+  {{ content }}
+
+  <footer class="post-foot">
+    {% if page.tags and page.tags.size > 0 %}
+      <div class="tagrow">{% for t in page.tags %}<span class="tag">{{ t }}</span>{% endfor %}</div>
+    {% endif %}
+    <div class="byrow">
+      {% if page.byline %}<span class="byline">Reported by {{ page.byline }}</span>{% endif %}
+      {% if page.source %}
+        <a class="btn" href="{{ page.source }}" rel="noopener nofollow" target="_blank">Read the original →</a>
+      {% endif %}
+    </div>
+  </footer>
+</article>

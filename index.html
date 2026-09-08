@@ -1,0 +1,35 @@
+---
+layout: default
+title: "Latest MMA & UFC News"
+---
+<section class="hero-home">
+  <h1>Latest in MMA</h1>
+  <p class="muted">UFC results, rumors and analysis — refreshed automatically from public reporting.</p>
+</section>
+
+{% if site.posts.size == 0 %}
+  <p class="empty">No stories yet — the auto-publisher will fill this page on its first run.
+     Check <code>_state/last-run.json</code> in the repo to see the bot's status.</p>
+{% endif %}
+
+<div class="cards">
+  {% for post in site.posts limit: 12 %}
+    <a class="card" href="{{ post.url | relative_url }}">
+      {% if post.image %}
+        <div class="thumb"><img src="{{ post.image }}" alt="" loading="lazy"></div>
+      {% endif %}
+      <div class="card-body">
+        <div class="meta">
+          <span class="date">{{ post.date | date: "%b %-d, %Y" }}</span>
+          {% if post.category %}<span class="cat">{{ post.category }}</span>{% endif %}
+        </div>
+        <h2>{{ post.title }}</h2>
+        {% if post.summary %}<p>{{ post.summary }}</p>{% endif %}
+      </div>
+    </a>
+  {% endfor %}
+</div>
+
+{% if site.posts.size > 12 %}
+  <p class="more"><a href="{{ '/archive/' | relative_url }}">View all {{ site.posts.size }} stories →</a></p>
+{% endif %}

@@ -1,0 +1,32 @@
+# MMA News — Jekyll config for GitHub Pages
+# Compatible with posts pushed by "MMA News Auto-Publisher v2" (n8n)
+title: "MMA News"
+description: "Daily UFC & MMA headlines, auto-curated with context and fight highlights."
+baseurl: "/mma-news"          # must equal the repo name; change if you rename the repo
+url: ""                       # leave empty — GitHub Pages serves at https://<user>.github.io/mma-news
+markdown: kramdown
+permalink: /news/:title/      # fallback; bot sets a permalink per post anyway
+timezone: UTC
+
+# GitHub Pages whitelisted plugins (free, no local build needed)
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# hygiene
+exclude:
+  - README.md
+  - .gitignore
+  - node_modules
+
+kramdown:
+  input: Kramdown
+  auto_ids: true
+
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
